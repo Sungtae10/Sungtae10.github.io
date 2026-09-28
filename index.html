@@ -1,0 +1,1044 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="김성태 | 성균관대학교 기술경영전문대학원 석사과정. 기업의 AI 전환 준비도를 측정하고 실행할 수 있는 전략으로 연결합니다.">
+<meta name="author" content="김성태 Sungtae Kim">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="김성태 Sungtae Kim">
+<meta property="og:description" content="김성태 | 성균관대학교 기술경영전문대학원 석사과정. 기업의 AI 전환 준비도를 측정하고 실행할 수 있는 전략으로 연결합니다.">
+<meta property="og:url" content="https://sungtae10.github.io/">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230D5B47'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='28' font-weight='700' text-anchor='middle' fill='%23ffffff'%3ESK%3C/text%3E%3C/svg%3E">
+<title>김성태 Sungtae Kim</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: report-style page. A narrow margin column carries each section label, the wide column carries the content; the hero spans both. */
+:root {
+  --paper: #F3F6F4;
+  --surface: #FFFFFF;
+  --ink: #13201B;
+  --muted: #56655E;
+  --line: #D2DCD7;
+  --accent: #0D5B47;
+  --accent-soft: #E0EDE7;
+  --on-accent: #FFFFFF;
+
+  --display: "Hahmlet", "Noto Serif KR", "AppleMyungjo", Georgia, serif;
+  --body: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --s-2: 0.75rem;
+  --s-1: 0.8125rem;
+  --s0: 1rem;
+  --s1: 1.125rem;
+  --s2: 1.375rem;
+  --s3: 1.625rem;
+  --s4: clamp(1.4rem, 1.1rem + 1.3vw, 2rem);
+  --s5: clamp(3rem, 1.5rem + 8vw, 6.25rem);
+
+  --gutter: clamp(16px, 4vw, 40px);
+  --measure: 64ch;
+  --bar: 3.75rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0E1412;
+    --surface: #141C19;
+    --ink: #E6EEEA;
+    --muted: #9BAEA6;
+    --line: #27342F;
+    --accent: #6CCBA9;
+    --accent-soft: #17322A;
+    --on-accent: #0B1411;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0E1412;
+  --surface: #141C19;
+  --ink: #E6EEEA;
+  --muted: #9BAEA6;
+  --line: #27342F;
+  --accent: #6CCBA9;
+  --accent-soft: #17322A;
+  --on-accent: #0B1411;
+  color-scheme: dark;
+}
+
+[hidden] { display: none !important; }
+:root:not([data-lang="en"]) .en,
+:root[data-lang="en"] .ko { display: none !important; }
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: var(--s0);
+  line-height: 1.72;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3 { text-wrap: balance; margin: 0; }
+p { margin: 0; text-wrap: pretty; }
+a { color: inherit; }
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+.wrap {
+  max-width: 1120px;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Top bar */
+.top {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 10;
+  background: var(--paper);
+  background: color-mix(in srgb, var(--paper) 90%, transparent);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.top-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: var(--bar);
+}
+.brand {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: var(--s1);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.brand small {
+  font-family: var(--mono);
+  font-size: var(--s-2);
+  font-weight: 400;
+  color: var(--muted);
+  margin-left: 0.5rem;
+}
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+.nav-links {
+  display: flex;
+  gap: 1.1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: var(--s-1);
+}
+.nav-links a {
+  text-decoration: none;
+  color: var(--muted);
+}
+.nav-links a:hover { color: var(--ink); }
+.lang {
+  display: inline-flex;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 2px;
+  background: var(--surface);
+}
+.lang button {
+  font: 500 var(--s-2)/1 var(--body);
+  color: var(--muted);
+  background: transparent;
+  border: 0;
+  border-radius: 999px;
+  padding: 0.45rem 0.7rem;
+  cursor: pointer;
+}
+.lang button[aria-pressed="true"] {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+/* Hero */
+.hero {
+  padding-block: clamp(3rem, 8vw, 6rem) clamp(2.5rem, 6vw, 4rem);
+  display: grid;
+  gap: 1.5rem;
+}
+.eyebrow {
+  font-size: var(--s-1);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+}
+.name {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: var(--s5);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+}
+.name-alt {
+  font-family: var(--mono);
+  font-size: var(--s-1);
+  color: var(--muted);
+  margin-top: -0.5rem;
+}
+.thesis {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: var(--s4);
+  line-height: 1.45;
+  max-width: 30ch;
+}
+.now {
+  color: var(--muted);
+  max-width: var(--measure);
+}
+.strengths {
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem 2rem;
+}
+.strengths li {
+  border-top: 2px solid var(--ink);
+  padding-top: 0.85rem;
+  display: grid;
+  gap: 0.35rem;
+  min-width: 0;
+}
+.strengths strong {
+  font-size: var(--s-1);
+  letter-spacing: 0.04em;
+  color: var(--accent);
+}
+.strengths span { font-size: 0.9375rem; }
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font: 600 var(--s-1)/1 var(--body);
+  text-decoration: none;
+  padding: 0.8rem 1.1rem;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  cursor: pointer;
+}
+.btn:hover { border-color: var(--ink); }
+.btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--on-accent);
+}
+.btn-primary:hover { filter: brightness(1.08); border-color: var(--accent); }
+.btn svg { width: 16px; height: 16px; flex: none; }
+
+/* Evidence ledger */
+.ledger {
+  background: var(--surface);
+  border-block: 1px solid var(--line);
+}
+.ledger dl {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.ledger .item {
+  padding: 1.6rem 1.25rem 1.5rem;
+  display: grid;
+  align-content: start;
+  gap: 0.4rem;
+  border-left: 1px solid var(--line);
+  min-width: 0;
+}
+.ledger .item:first-child { border-left: 0; padding-left: 0; }
+.ledger dt {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(1.75rem, 1.3rem + 1.6vw, 2.5rem);
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+.ledger dd { margin: 0; }
+.ledger .what { font-weight: 500; font-size: 0.9375rem; line-height: 1.5; }
+.ledger .src { font-size: var(--s-2); color: var(--muted); line-height: 1.5; }
+
+/* Sections */
+.sec {
+  display: grid;
+  grid-template-columns: minmax(0, 10rem) minmax(0, 1fr);
+  gap: clamp(1rem, 4vw, 3rem);
+  padding-block: clamp(2.75rem, 6vw, 4.5rem);
+  border-top: 1px solid var(--line);
+  scroll-margin-top: calc(env(safe-area-inset-top, 0px) + var(--bar));
+}
+.sec:first-of-type { border-top: 0; }
+.sec-label {
+  font-family: var(--body);
+  font-size: var(--s-1);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  align-self: start;
+  position: sticky;
+  top: calc(env(safe-area-inset-top, 0px) + var(--bar) + 1.25rem);
+}
+.sec-body { min-width: 0; display: grid; gap: 1.25rem; }
+.lead { color: var(--muted); max-width: var(--measure); }
+
+.entry {
+  display: grid;
+  gap: 0.75rem;
+  padding-block: 1.75rem;
+  border-top: 1px solid var(--line);
+  min-width: 0;
+}
+.entry:first-child { border-top: 0; padding-top: 0; }
+.entry h3 {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: var(--s3);
+  line-height: 1.3;
+}
+.entry .meta {
+  font-size: var(--s-1);
+  color: var(--muted);
+}
+.entry p, .entry ul { max-width: var(--measure); }
+.entry ul:not(.stack) { margin: 0; padding-left: 1.1rem; display: grid; gap: 0.3rem; }
+.tag {
+  display: inline-block;
+  font-size: var(--s-2);
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-radius: 4px;
+  padding: 0.2rem 0.5rem;
+  margin-right: 0.35rem;
+  vertical-align: 0.1em;
+}
+.note { font-size: 0.9375rem; color: var(--muted); }
+
+.stack {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.stack li {
+  font-family: var(--mono);
+  font-size: var(--s-2);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.15rem 0.6rem;
+  color: var(--muted);
+}
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.1rem;
+  font-size: var(--s-1);
+  font-weight: 600;
+}
+.links a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 1px;
+}
+.links a:hover { border-bottom-width: 2px; }
+
+/* DART metrics table */
+.table-wrap {
+  overflow-x: auto;
+  max-width: var(--measure);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+}
+.metrics {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+  font-variant-numeric: tabular-nums;
+}
+.metrics caption {
+  caption-side: bottom;
+  text-align: left;
+  padding: 0.6rem 0.9rem 0.75rem;
+  font-size: var(--s-2);
+  color: var(--muted);
+}
+.metrics th, .metrics td {
+  text-align: left;
+  padding: 0.6rem 0.9rem;
+  border-bottom: 1px solid var(--line);
+}
+.metrics thead th {
+  font-size: var(--s-2);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+.metrics td.num {
+  text-align: right;
+  font-family: var(--mono);
+  white-space: nowrap;
+}
+
+/* AX Radar stage scale */
+.stages {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.35rem;
+  max-width: var(--measure);
+}
+.stages li {
+  font-size: var(--s-1);
+  font-weight: 500;
+  display: grid;
+  gap: 0.35rem;
+  min-width: 0;
+}
+.stages li::before {
+  content: "";
+  height: 6px;
+  border-radius: 3px;
+  background: var(--accent);
+  opacity: calc(0.18 + 0.2 * var(--i));
+}
+
+/* Smaller work list */
+.more {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
+}
+.more li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.25rem 1.5rem;
+  padding-block: 0.9rem;
+  border-top: 1px solid var(--line);
+}
+.more li:last-child { border-bottom: 1px solid var(--line); }
+.more .t { font-weight: 600; }
+.more .d { grid-column: 1; color: var(--muted); font-size: 0.9375rem; }
+.more .l { grid-column: 2; grid-row: 1 / span 2; align-self: center; }
+.more .l a {
+  font-size: var(--s-1);
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+}
+.sub-head {
+  font-size: var(--s-1);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin-top: 1rem;
+}
+
+/* Timeline */
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.timeline > li {
+  display: grid;
+  grid-template-columns: minmax(0, 9rem) minmax(0, 1fr);
+  gap: 0.35rem 1.5rem;
+  padding-block: 1.35rem;
+  border-top: 1px solid var(--line);
+}
+.timeline > li:first-child { border-top: 0; padding-top: 0; }
+.when {
+  font-family: var(--mono);
+  font-size: var(--s-1);
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  padding-top: 0.2rem;
+}
+.what-col { min-width: 0; display: grid; gap: 0.35rem; }
+.org { font-weight: 600; font-size: var(--s1); line-height: 1.45; }
+.role { color: var(--muted); font-size: 0.9375rem; }
+.what-col ul {
+  margin: 0.35rem 0 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.25rem;
+  max-width: var(--measure);
+}
+.compact { font-size: 0.9375rem; color: var(--muted); max-width: var(--measure); }
+.compact b { color: var(--ink); font-weight: 600; }
+
+/* Credentials */
+.cred {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15.5rem, 1fr));
+  gap: 1.75rem 2.5rem;
+}
+.cred h3 {
+  font-family: var(--body);
+  font-size: var(--s-1);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+.cred ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+.cred li { font-size: 0.9375rem; line-height: 1.55; }
+.cred li small { display: block; color: var(--muted); font-size: var(--s-2); }
+
+/* Contact */
+.contact-grid { display: grid; gap: 1.25rem; }
+.email-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+}
+.email {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(1.25rem, 0.9rem + 1.6vw, 1.875rem);
+  user-select: all;
+  overflow-wrap: anywhere;
+}
+.contact-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 0.75rem 2rem;
+}
+.contact-list li { display: grid; gap: 0.1rem; }
+.contact-list small { font-size: var(--s-2); color: var(--muted); letter-spacing: 0.04em; }
+.contact-list a { color: var(--accent); font-weight: 600; text-decoration: none; overflow-wrap: anywhere; }
+.contact-list a:hover { text-decoration: underline; }
+
+.foot {
+  border-top: 1px solid var(--line);
+  padding-block: 1.75rem 2.5rem;
+  font-size: var(--s-2);
+  color: var(--muted);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .ledger dl { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ledger .item { border-left: 0; border-top: 1px solid var(--line); padding-left: 0; }
+  .ledger .item:nth-child(-n+2) { border-top: 0; }
+  .ledger .item:nth-child(even) { padding-left: 1.25rem; border-left: 1px solid var(--line); }
+  .strengths { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 760px) {
+  .nav-links { display: none; }
+  .sec { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+  .sec-label { position: static; }
+  .timeline > li { grid-template-columns: minmax(0, 1fr); }
+  .when { padding-top: 0; }
+}
+@media (max-width: 480px) {
+  .ledger dl { grid-template-columns: minmax(0, 1fr); }
+  .ledger .item,
+  .ledger .item:nth-child(even) { padding-left: 0; border-left: 0; }
+  .ledger .item:nth-child(2) { border-top: 1px solid var(--line); }
+  .brand small { display: none; }
+  .stages { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .stages li { font-size: var(--s-2); }
+  .more li { grid-template-columns: minmax(0, 1fr); }
+  .more .l { grid-column: 1; grid-row: auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap top-inner">
+    <a class="brand" href="#top"><span class="ko">김성태</span><span class="en">Sungtae Kim</span><small>MOT · SKKU</small></a>
+    <nav class="nav" aria-label="Sections">
+      <ul class="nav-links">
+        <li><a href="#research"><span class="ko">연구</span><span class="en">Research</span></a></li>
+        <li><a href="#work"><span class="ko">프로젝트</span><span class="en">Work</span></a></li>
+        <li><a href="#experience"><span class="ko">경력</span><span class="en">Experience</span></a></li>
+        <li><a href="#education"><span class="ko">학력·자격</span><span class="en">Education</span></a></li>
+        <li><a href="#contact"><span class="ko">연락</span><span class="en">Contact</span></a></li>
+      </ul>
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" id="lang-ko" data-set-lang="ko" aria-pressed="true">한국어</button>
+        <button type="button" id="lang-en" data-set-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero wrap">
+    <p class="eyebrow"><span class="ko">기술경영 연구 | AI 전환 전략</span><span class="en">MANAGEMENT OF TECHNOLOGY | AI TRANSFORMATION STRATEGY</span></p>
+    <h1 class="name"><span class="ko">김성태</span><span class="en">Sungtae Kim</span></h1>
+    <p class="name-alt"><span class="ko">Sungtae Kim</span><span class="en">김성태</span></p>
+    <p class="thesis">
+      <span class="ko">기업의 AI 전환 준비도를 측정하고, 실행할 수 있는 전략으로 연결합니다.</span>
+      <span class="en">I measure how ready companies are for AI and turn the results into strategy they can act on.</span>
+    </p>
+    <p class="now">
+      <span class="ko">성균관대학교 기술경영전문대학원 석사과정이며 계량기술경영연구실 연구원으로 일하고 있습니다.</span>
+      <span class="en">Master's Student in Management of Technology at Sungkyunkwan University and Graduate Researcher in the Quantitative Management of Technology Lab.</span>
+    </p>
+    <ul class="strengths">
+      <li>
+        <strong><span class="ko">전략 조직 실무</span><span class="en">Strategy operations</span></strong>
+        <span><span class="ko">삼성글로벌리서치 채용·평가 운영과 해외 경제동향 브리프, 한국경제인협회 CEO 과정 기획</span><span class="en">Hiring and evaluation operations and overseas trend briefs at Samsung Global Research; CEO program planning at FKI</span></span>
+      </li>
+      <li>
+        <strong><span class="ko">만들고, 수치로 검증</span><span class="en">Build, then measure</span></strong>
+        <span><span class="ko">공시 분석 RAG 앱, 제조기업 AX 진단 서비스, 자동화 파이프라인을 직접 만들고 평가 결과를 공개</span><span class="en">A RAG app for corporate filings, an AX diagnosis service for manufacturers and automation pipelines, with evaluation results published</span></span>
+      </li>
+      <li>
+        <strong><span class="ko">연구 기반</span><span class="en">Research base</span></strong>
+        <span><span class="ko">공시 텍스트로 기업 미래대응역량(CFM)을 측정하는 석사 연구</span><span class="en">Master's research that measures corporate foresight maturity (CFM) from disclosure text</span></span>
+      </li>
+    </ul>
+    <div class="actions">
+      <button type="button" class="btn btn-primary" id="copy-email-hero" data-copy="kkst01221203@gmail.com">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M2 4h12v8H2z M2 4.5l6 4.5 6-4.5"/></svg>
+        <span class="copy-idle"><span class="ko">이메일 주소 복사</span><span class="en">Copy email address</span></span>
+        <span class="copy-done" hidden><span class="ko">복사했습니다</span><span class="en">Copied</span></span>
+      </button>
+      <a class="btn" href="https://www.linkedin.com/in/sungtaekim0122" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/Sungtae10" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </section>
+
+  <section class="ledger" aria-label="Evidence">
+    <div class="wrap">
+      <dl>
+        <div class="item">
+          <dt>0 / 20</dt>
+          <dd class="what"><span class="ko">환각 답변 수</span><span class="en">Hallucinated answers</span></dd>
+          <dd class="src"><span class="ko">DART-Foresight AI 평가 | 사업보고서 2건, 일반 질문 20개</span><span class="en">DART-Foresight AI evaluation | 2 annual reports, 20 standard questions</span></dd>
+        </div>
+        <div class="item">
+          <dt>7 / 7</dt>
+          <dd class="what"><span class="ko">두 자동화 도구의 점수 일치</span><span class="en">Matching scores across two automation tools</span></dd>
+          <dd class="src"><span class="ko">같은 워크플로를 Make와 n8n으로 구현 | 기사 7건</span><span class="en">Same workflow built in Make and n8n | 7 articles</span></dd>
+        </div>
+        <div class="item">
+          <dt><span class="ko">약 30%</span><span class="en">~30%</span></dt>
+          <dd class="what"><span class="ko">다국가 인터뷰 일정 조율 리드타임 단축</span><span class="en">Shorter lead time for multi-country interview scheduling</span></dd>
+          <dd class="src"><span class="ko">삼성글로벌리서치 | 2023</span><span class="en">Samsung Global Research | 2023</span></dd>
+        </div>
+        <div class="item">
+          <dt><span class="ko">장관상</span><span class="en">Minister's Award</span></dt>
+          <dd class="what"><span class="ko">외교부 장관상(우수상)</span><span class="en">Award of Excellence, Ministry of Foreign Affairs</span></dd>
+          <dd class="src">2026 MIKTA Young Leaders' Camp</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <section class="sec" id="research">
+      <h2 class="sec-label"><span class="ko">연구</span><span class="en">Research</span></h2>
+      <div class="sec-body">
+        <article class="entry">
+          <p class="meta"><span class="ko">석사논문 가제 | 지도교수 신준석 | 2026~</span><span class="en">Master's thesis, working title | Advisor: Prof. Junseok Shin | 2026–</span></p>
+          <h3><span class="ko">LLM 기반 기업 미래대응역량(Corporate Foresight Maturity) 지수 개발과 기업성과 연관성 분석</span><span class="en">Developing an LLM-based Corporate Foresight Maturity (CFM) Index and Its Link to Firm Performance</span></h3>
+          <p><span class="ko">기업이 미래 변화에 대비하는 역량을 설문 대신 공시 텍스트로 측정하는 지수를 만듭니다. Study 1에서 설문 기반 CFM 점수를 사업보고서 텍스트로 재현하고 타당성을 검증합니다. Study 2에서는 시간에 따른 예측 타당도를 봅니다.</span><span class="en">I am building an index that measures how well firms prepare for future change, using disclosure text instead of surveys. Study 1 reproduces survey-based CFM scores from Korean annual reports and tests their validity. Study 2 examines predictive validity over time.</span></p>
+          <p class="note"><span class="ko">2026년 12월 국내 학회 발표 목표</span><span class="en">Target: domestic conference presentation, December 2026</span></p>
+        </article>
+        <article class="entry">
+          <p class="meta"><span class="ko">지도교수 연구과제 참여 | 2026.09~</span><span class="en">Advisor-led research project | Sep 2026–</span></p>
+          <h3><span class="ko">R&amp;D 조직을 위한 AX(AI 전환) 성숙도 모델</span><span class="en">AX (AI Transformation) Maturity Model for R&amp;D Organizations</span></h3>
+          <p><span class="ko">문헌에 근거해 R&amp;D 조직의 업무 프로세스마다 필요한 AI 활용 수준을 진단하는 표준 모델을 만드는 과제에 참여하고 있습니다. 스킬과 도구 수준을 먼저 진단한 뒤 프로세스의 목적에 맞는 수준을 정하는 구조입니다.</span><span class="en">I am contributing to a literature-based standard model that diagnoses the level of AI use each R&amp;D process needs. It first assesses skill and tool levels, then sets a target level that fits the purpose of each process.</span></p>
+        </article>
+      </div>
+    </section>
+
+    <section class="sec" id="work">
+      <h2 class="sec-label"><span class="ko">프로젝트</span><span class="en">Work</span></h2>
+      <div class="sec-body">
+        <p class="lead"><span class="ko">모든 프로젝트의 코드와 평가 결과는 공개 저장소에 있습니다.</span><span class="en">Code and evaluation results for every project are in public repositories.</span></p>
+
+        <article class="entry">
+          <p class="meta"><span class="ko">2026.06~07 | NIPA × Google Study Jam PBL 2기 최종 프로젝트</span><span class="en">Jun–Jul 2026 | Final project, NIPA × Google Study Jam PBL (2nd cohort)</span></p>
+          <h3>DART-Foresight AI</h3>
+          <p><span class="ko">DART에서 내려받은 사업보고서 PDF를 올리면 AI 투자, 디지털 전환, R&amp;D, 위험관리, 신사업 질문에 근거 문장과 함께 답하는 RAG 앱입니다. 7개 차원의 AI/DX 준비도 스코어카드를 함께 씁니다.</span><span class="en">A RAG app that answers questions on AI investment, digital transformation, R&amp;D, risk management and new business from a DART annual report PDF, citing the retrieved text. It comes with a seven-dimension AI/DX readiness scorecard.</span></p>
+          <div class="table-wrap">
+            <table class="metrics">
+              <caption><span class="ko">평가 대상: 삼성전자·현대자동차 사업보고서, 보고서당 12문항(일반 10, 범위 밖 2)</span><span class="en">Evaluated on Samsung Electronics and Hyundai Motor annual reports, 12 questions each (10 standard, 2 out of scope)</span></caption>
+              <thead>
+                <tr><th scope="col"><span class="ko">지표</span><span class="en">Metric</span></th><th scope="col" class="num"><span class="ko">결과</span><span class="en">Result</span></th></tr>
+              </thead>
+              <tbody>
+                <tr><td><span class="ko">환각 답변 (일반 질문, 수기 판정)</span><span class="en">Hallucination (standard questions, manual check)</span></td><td class="num">0 / 20</td></tr>
+                <tr><td><span class="ko">범위 밖 질문 거부 정확도</span><span class="en">Refusal accuracy on out-of-scope questions</span></td><td class="num">4 / 4</td></tr>
+                <tr><td><span class="ko">근거성 (검색 문장이 답을 뒷받침)</span><span class="en">Groundedness (answer supported by retrieved text)</span></td><td class="num">15 / 20</td></tr>
+                <tr><td><span class="ko">검색 Hit@4</span><span class="en">Retriever Hit@4</span></td><td class="num">14 / 20</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="note"><span class="ko">약점은 검색 단계입니다. 맞는 문단을 찾았을 때 생성 답변은 근거를 벗어나지 않았습니다.</span><span class="en">Retrieval is the weak point. When the right passages were retrieved, the answers stayed grounded.</span></p>
+          <ul class="stack" aria-label="Stack"><li>Python</li><li>Streamlit</li><li>LangChain</li><li>ChromaDB</li><li>OpenAI gpt-4o-mini</li></ul>
+          <p class="links"><a href="https://github.com/Sungtae10/dart-foresight-ai" target="_blank" rel="noopener"><span class="ko">GitHub 저장소</span><span class="en">GitHub repository</span></a></p>
+        </article>
+
+        <article class="entry">
+          <p class="meta"><span class="ko">2026.09 | 코디세이 AI 네이티브 과정</span><span class="en">Sep 2026 | Codyssey AI Native program</span></p>
+          <h3><span class="ko">AX 레이더</span><span class="en">AX Radar</span></h3>
+          <p><span class="ko">제조기업 실무자가 5개 영역(전략·리더십, 데이터 기반, 기술·인프라, 인재·조직문화, 프로세스·거버넌스)을 1~5점으로 체크하면 현재 단계를 계산하고, AI가 강점과 보완점, 3단계 로드맵, KPI 3개, 이번 주 할 일을 제안하는 웹 서비스입니다.</span><span class="en">A web service for manufacturing staff. Users rate five areas (strategy and leadership, data foundation, technology and infrastructure, talent and culture, process and governance) from 1 to 5. The service computes the current stage, and AI proposes strengths, gaps, a three-phase roadmap, three KPIs and actions for this week.</span></p>
+          <ol class="stages" aria-label="Five stages">
+            <li style="--i:0"><span class="ko">탐색</span><span class="en">Explore</span></li>
+            <li style="--i:1"><span class="ko">실험</span><span class="en">Experiment</span></li>
+            <li style="--i:2"><span class="ko">확산</span><span class="en">Expand</span></li>
+            <li style="--i:3"><span class="ko">내재화</span><span class="en">Embed</span></li>
+            <li style="--i:4"><span class="ko">선도</span><span class="en">Lead</span></li>
+          </ol>
+          <p class="note"><span class="ko">단계 계산은 코드가 해서 같은 점수는 항상 같은 단계가 나옵니다. AI는 제안 문장만 씁니다.</span><span class="en">Code computes the stage, so the same scores always give the same stage. AI writes only the recommendations.</span></p>
+          <ul class="stack" aria-label="Stack"><li>HTML/CSS/JS</li><li>Vercel Serverless (Python)</li><li>Gemini API</li></ul>
+          <p class="links">
+            <a href="https://codyssey-a1-3-ax-radar-ofpt.vercel.app" target="_blank" rel="noopener"><span class="ko">서비스 열기</span><span class="en">Open the service</span></a>
+            <a href="https://github.com/Sungtae10/codyssey-a1-3-ax-radar" target="_blank" rel="noopener"><span class="ko">GitHub 저장소</span><span class="en">GitHub repository</span></a>
+          </p>
+        </article>
+
+        <article class="entry">
+          <p class="meta"><span class="ko">2026.09 | 코디세이 팀 프로젝트, 4인</span><span class="en">Sep 2026 | Codyssey team project, 4 members</span></p>
+          <h3><span class="tag"><span class="ko">팀장</span><span class="en">Team lead</span></span><span class="ko">뉴스 인사이트 파이프라인</span><span class="en">News Insight Pipeline</span></h3>
+          <p><span class="ko">뉴스 수집(RSS·크롤링), 정제, AI 요약·키워드·감성 분석, 기간·분야별 분석, 리포트와 CSV·XLSX 내보내기를 하나의 CLI로 묶은 데이터 파이프라인입니다.</span><span class="en">A single CLI data pipeline: news collection (RSS and crawling), cleaning, AI summaries with keywords and sentiment, analysis by period and category, and reports with CSV or XLSX export.</span></p>
+          <p><span class="ko">팀장으로 저장소 구조와 공통 뼈대(main·config·DB), 모듈 통합, 문서를 맡았습니다. 파일 소유권 규칙을 정하고 Pull Request로 협업했습니다.</span><span class="en">As team lead I set up the repository and the shared core (main, config, database), integrated the modules and wrote the docs. I set file-ownership rules and ran the collaboration through pull requests.</span></p>
+          <ul class="stack" aria-label="Stack"><li>Python</li><li>SQLite</li><li>argparse</li><li>feedparser</li><li>BeautifulSoup</li></ul>
+          <p class="links"><a href="https://github.com/Sungtae10/codyssey-a2-news-pipeline" target="_blank" rel="noopener"><span class="ko">GitHub 저장소</span><span class="en">GitHub repository</span></a></p>
+        </article>
+
+        <article class="entry">
+          <p class="meta"><span class="ko">2026.07~08 | 코디세이 AI 네이티브 과정</span><span class="en">Jul–Aug 2026 | Codyssey AI Native program</span></p>
+          <h3><span class="ko">노코드 자동화: Make와 n8n 비교 구현</span><span class="en">No-code Automation: Make and n8n Side by Side</span></h3>
+          <p><span class="ko">같은 기사 점수화 워크플로를 Make와 n8n으로 각각 구현해 9개 항목을 실측으로 비교했고, 같은 기사 7건의 점수가 모두 일치하는 것을 확인했습니다. 이어서 DART 공시 전략 시그널 레이더를 Make로 만들어 매일 08:00에 자동 실행되게 했습니다. 유료 결제 없이 구현했습니다.</span><span class="en">I built the same article-scoring workflow in Make and in n8n, compared them on nine measured criteria, and confirmed that the scores matched for the same seven articles. I then built a DART filing signal radar in Make that runs every day at 08:00. No paid plans were used.</span></p>
+          <ul class="stack" aria-label="Stack"><li>Make</li><li>n8n (self-hosted)</li><li>JavaScript</li></ul>
+          <p class="links"><a href="https://github.com/Sungtae10/codyssey-b1-3-nocode-automation" target="_blank" rel="noopener"><span class="ko">GitHub 저장소</span><span class="en">GitHub repository</span></a></p>
+        </article>
+
+        <h3 class="sub-head"><span class="ko">그 밖의 작업</span><span class="en">More work</span></h3>
+        <ul class="more">
+          <li>
+            <span class="t"><span class="ko">CFM 논문 요약 프롬프트 시스템</span><span class="en">CFM paper-summary prompt system</span></span>
+            <span class="d"><span class="ko">2026.06 | 기술경영·CFM 논문을 연구에 바로 쓸 수 있게 정리하는 프롬프트 설계, LLM 3종 비교, Few-shot, 환각 검증</span><span class="en">Jun 2026 | Prompt design that turns technology-management and CFM papers into research-ready notes; three LLMs compared, few-shot examples, hallucination checks</span></span>
+            <span class="l"><a href="https://github.com/Sungtae10/Codyssey-ai-tools-B1-1" target="_blank" rel="noopener">GitHub</a></span>
+          </li>
+          <li>
+            <span class="t"><span class="ko">국내 여행 추천 CLI</span><span class="en">Domestic travel planner CLI</span></span>
+            <span class="d"><span class="ko">2026.09 | LLM API와 지도 API 연동, 오류 재시도·키 가리기·캐시, 단위·흐름 테스트 43개와 E2E 테스트 8개</span><span class="en">Sep 2026 | LLM and map API integration with retries, key masking and caching; 43 unit and flow tests plus 8 end-to-end tests</span></span>
+            <span class="l"><a href="https://github.com/Sungtae10/codyssey-a1-2-travel-planner" target="_blank" rel="noopener">GitHub</a></span>
+          </li>
+          <li>
+            <span class="t"><span class="ko">KARIOS 멀티모달 AI 광고</span><span class="en">KARIOS multimodal AI ad</span></span>
+            <span class="d"><span class="ko">2026.07 | 이미지·영상·음악을 모두 생성형 AI로 만든 10초 광고와 프롬프트 기록</span><span class="en">Jul 2026 | A 10-second ad with images, video and music all made with generative AI, plus the prompt log</span></span>
+            <span class="l"><a href="https://github.com/Sungtae10/Codyssey-ai-tools-B1-2" target="_blank" rel="noopener">GitHub</a></span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="sec" id="experience">
+      <h2 class="sec-label"><span class="ko">경력</span><span class="en">Experience</span></h2>
+      <div class="sec-body">
+        <ol class="timeline" reversed>
+          <li>
+            <p class="when"><span class="ko">2024.07~2024.09</span><span class="en">Jul 2024 – Sep 2024</span></p>
+            <div class="what-col">
+              <p class="org"><span class="ko">IBK연금보험 GA영업부</span><span class="en">IBK Pension Insurance</span></p>
+              <p class="role">GA Sales Operations</p>
+              <ul>
+                <li><span class="ko">설계사 위촉·해촉 서류를 검증해 시스템에 반영하고 전자청약을 지원했습니다.</span><span class="en">Verified agent appointment and termination documents, updated the system and supported e-applications.</span></li>
+                <li><span class="ko">주간 KPI 대시보드를 만들고 개인정보 마스킹 등 내부통제 절차를 지켰습니다.</span><span class="en">Built a weekly KPI dashboard and applied internal controls such as personal-data masking.</span></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <p class="when"><span class="ko">2024.04~2024.07</span><span class="en">Apr 2024 – Jul 2024</span></p>
+            <div class="what-col">
+              <p class="org"><span class="ko">현대해상화재보험 장기실손관리파트</span><span class="en">Hyundai Marine &amp; Fire Insurance</span></p>
+              <p class="role">Long-Term Insurance Medical Data Analyst</p>
+              <ul>
+                <li><span class="ko">청구 문서를 검증하고 KCD/ICD·EDI 코드를 분류·정규화했습니다.</span><span class="en">Verified claim documents and classified and normalized KCD/ICD and EDI codes.</span></li>
+                <li><span class="ko">코드 변환 규칙을 템플릿으로 만들고 코드북·체크리스트와 비식별화 절차를 관리했습니다.</span><span class="en">Turned code-conversion rules into templates and maintained the codebook, checklists and de-identification steps.</span></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <p class="when"><span class="ko">2023.12~2024.03</span><span class="en">Dec 2023 – Mar 2024</span></p>
+            <div class="what-col">
+              <p class="org"><span class="ko">한국경제인협회 CEO교육실</span><span class="en">Federation of Korean Industries (FKI)</span></p>
+              <p class="role">CEO Education &amp; Program Researcher</p>
+              <ul>
+                <li><span class="ko">최고경영자·차세대 CEO 과정을 기획·운영하고 모집, 등록, 수료, NPS를 한눈에 보는 KPI 대시보드를 만들었습니다.</span><span class="en">Planned and ran CEO and next-generation CEO programs, and built a KPI dashboard covering recruitment, registration, completion and NPS.</span></li>
+                <li><span class="ko">스타트업 IR 프로그램(투자심사역 풀, 평가 루브릭, 매칭 미팅)과 신사업 팀 파일럿 커리큘럼을 설계했습니다.</span><span class="en">Designed a startup IR program (investor pool, evaluation rubric, matching meetings) and a pilot curriculum for a new-business team.</span></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <p class="when"><span class="ko">2023.02~2023.12</span><span class="en">Feb 2023 – Dec 2023</span></p>
+            <div class="what-col">
+              <p class="org"><span class="ko">삼성글로벌리서치 글로벌전략실</span><span class="en">Samsung Global Research</span></p>
+              <p class="role"><span class="ko">Strategy &amp; Business Operations Associate (계약직)</span><span class="en">Strategy &amp; Business Operations Associate (Contract)</span></p>
+              <ul>
+                <li><span class="ko">외국인 Principal·Associate Principal·MBA 인턴 경력 채용과 프로젝트·연간 평가 라운드의 운영 업무를 수행했습니다.</span><span class="en">Handled operations for experienced hiring (international Principals, Associate Principals and MBA interns) and for project and annual evaluation rounds.</span></li>
+                <li><span class="ko">다국가 인터뷰 일정 조율의 리드타임을 약 30% 줄였습니다.</span><span class="en">Cut lead time for multi-country interview scheduling by about 30%.</span></li>
+                <li><span class="ko">해외 컨설팅펌 자료를 조사하고 해외 경제동향 주간 브리프를 작성했으며, 온보딩과 문화 교육을 지원했습니다.</span><span class="en">Researched global consulting firms, wrote weekly briefs on overseas economic trends, and supported onboarding and culture training.</span></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <p class="when"><span class="ko">2022.06~2022.08</span><span class="en">Jun 2022 – Aug 2022</span></p>
+            <div class="what-col">
+              <p class="org">Pabii</p>
+              <p class="role"><span class="ko">데이터 분석·에디토리얼 인턴</span><span class="en">Data Analysis &amp; Editorial Intern</span></p>
+              <ul>
+                <li><span class="ko">OTT RANKING, THE POLICY KOREA, VENTURE ECONOMY 기사를 쓰고 편집했으며 KPI 도출과 이벤트 스터디 분석을 했습니다.</span><span class="en">Wrote and edited articles for OTT RANKING, THE POLICY KOREA and VENTURE ECONOMY; derived KPIs and ran event-study analyses.</span></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <p class="when"><span class="ko">2021.12~2022.02</span><span class="en">Dec 2021 – Feb 2022</span></p>
+            <div class="what-col">
+              <p class="org"><span class="ko">Coinone 운영관리팀</span><span class="en">Coinone</span></p>
+              <p class="role"><span class="ko">고객관리 어시스턴트</span><span class="en">Customer Management Assistant</span></p>
+              <ul>
+                <li><span class="ko">입출금·KYC·2FA 문의 1차 응대, 지갑 통합(스윕) 프로젝트 지원, 체인별 주소 검증과 잔고·출금 큐 모니터링을 했습니다.</span><span class="en">Handled first-line deposit, withdrawal, KYC and 2FA inquiries; supported a wallet consolidation (sweep) project; verified chain addresses and monitored balance and withdrawal queues.</span></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <p class="when"><span class="ko">2021.06~2021.08</span><span class="en">Jun 2021 – Aug 2021</span></p>
+            <div class="what-col">
+              <p class="org">NGS Global Korea</p>
+              <p class="role">HR Associate (Executive Search)</p>
+              <ul>
+                <li><span class="ko">개발자(FE/BE/DevOps)와 부장~임원급 후보자를 LinkedIn·GitHub·불린 검색으로 찾고 보상 벤치마크 브리프를 작성했습니다.</span><span class="en">Sourced developer (FE/BE/DevOps) and director-to-executive candidates through LinkedIn, GitHub and Boolean search, and wrote compensation benchmark briefs.</span></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <p class="when"><span class="ko">2020.04~2021.05</span><span class="en">Apr 2020 – May 2021</span></p>
+            <div class="what-col">
+              <p class="org"><span class="ko">이전 경력</span><span class="en">Earlier roles</span></p>
+              <p class="compact"><span class="ko"><b>SZU Korea 경영지원팀</b> (2020.12~2021.05): 의료기기 문서 영한·한영 번역, 규격·인증 동향 조사 | <b>THE SMC 운영지원팀</b> (2020.04~2020.08): 이커머스 채널 상품 운영과 채널별 정산</span><span class="en"><b>SZU Korea</b>, Management Support (Dec 2020 – May 2021): medical-device document translation between Korean and English, standards and certification research | <b>THE SMC Group</b>, Operations Support (Apr 2020 – Aug 2020): e-commerce channel operations and settlement</span></p>
+            </div>
+          </li>
+          <li>
+            <p class="when"><span class="ko">2018.08~2020.03</span><span class="en">Aug 2018 – Mar 2020</span></p>
+            <div class="what-col">
+              <p class="org"><span class="ko">대한민국 해병대 제2사단</span><span class="en">Republic of Korea Marine Corps, 2nd Division</span></p>
+              <p class="role"><span class="ko">병장 만기전역 | C4I 특기</span><span class="en">Sergeant / C4I Specialist</span></p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="sec" id="education">
+      <h2 class="sec-label"><span class="ko">학력·자격</span><span class="en">Education</span></h2>
+      <div class="sec-body">
+        <ol class="timeline" reversed>
+          <li>
+            <p class="when"><span class="ko">2026.03~</span><span class="en">Mar 2026 –</span></p>
+            <div class="what-col">
+              <p class="org"><span class="ko">성균관대학교 기술경영전문대학원</span><span class="en">Sungkyunkwan University (SKKU), Graduate School of Management of Technology</span></p>
+              <p class="role"><span class="ko">기술경영학과 석사과정 | 계량기술경영연구실 (지도교수 신준석) | 2027.08 졸업 예정</span><span class="en">Master's Student in Management of Technology (MOT) | Quantitative Management of Technology Lab, Advisor: Prof. Junseok Shin | Expected Aug 2027</span></p>
+            </div>
+          </li>
+          <li>
+            <p class="when"><span class="ko">2026.08</span><span class="en">Aug 2026</span></p>
+            <div class="what-col">
+              <p class="org">SPRU Summer School – University of Sussex</p>
+              <p class="role"><span class="ko">Summer School Participant | 과정명 Regional, National and International Dimensions of Technology Policy and Management</span><span class="en">Summer School Participant | Regional, National and International Dimensions of Technology Policy and Management</span></p>
+            </div>
+          </li>
+          <li>
+            <p class="when"><span class="ko">2017.08~2025.08</span><span class="en">Aug 2017 – Aug 2025</span></p>
+            <div class="what-col">
+              <p class="org">Stony Brook University</p>
+              <p class="role">B.S. in Technological Systems Management | Focus: ICT for Sustainable Development (ICT4D)</p>
+              <p class="role"><span class="ko">Dean's List 4개 학기 (Fall 2020, Spring 2021, Fall 2021, Spring 2025)</span><span class="en">Dean's List, four semesters (Fall 2020, Spring 2021, Fall 2021, Spring 2025)</span></p>
+            </div>
+          </li>
+        </ol>
+
+        <div class="cred">
+          <div>
+            <h3><span class="ko">수상</span><span class="en">Award</span></h3>
+            <ul>
+              <li><span class="ko">외교부 장관상(우수상)</span><span class="en">Award of Excellence (Minister of Foreign Affairs Award)</span><small>2026 MIKTA Young Leaders' Camp</small></li>
+            </ul>
+          </div>
+          <div>
+            <h3><span class="ko">자격·수료</span><span class="en">Certifications and programs</span></h3>
+            <ul>
+              <li>Microsoft Azure AI Fundamentals (AI-900)</li>
+              <li>Google AI Fundamentals</li>
+              <li><span class="ko">Microsoft AI School 수료</span><span class="en">Microsoft AI School, completed</span></li>
+              <li><span class="ko">NIPA × Google Study Jam PBL 2기 수료</span><span class="en">NIPA × Google Study Jam PBL, 2nd cohort, completed</span><small>2026.06~07</small></li>
+              <li>IBM Python for Data Science, AI &amp; Development<small>Coursera, 2026.06</small></li>
+            </ul>
+          </div>
+          <div>
+            <h3><span class="ko">언어·스킬</span><span class="en">Languages and skills</span></h3>
+            <ul>
+              <li><span class="ko">한국어 모국어 | 영어 유창 (OPIc IH) | 중국어·일본어 기초</span><span class="en">Korean (native) | English (fluent, OPIc IH) | Chinese and Japanese (basic)</span></li>
+              <li><span class="ko">Python (프로젝트 기반) | SQL (기초)</span><span class="en">Python (project-based) | SQL (basic)</span></li>
+              <li><span class="ko">LLM 앱: RAG, 프롬프트 설계, 평가 | 자동화: Make, n8n | Excel 대시보드</span><span class="en">LLM apps: RAG, prompt design, evaluation | Automation: Make, n8n | Excel dashboards</span></li>
+            </ul>
+          </div>
+          <div>
+            <h3><span class="ko">활동</span><span class="en">Activities</span></h3>
+            <ul>
+              <li><span class="ko">성균관대 기술경영전문대학원 20기 원우회 소통·홍보부, 학과 공식 인스타그램 운영</span><span class="en">Communications team, 20th-cohort graduate student council, SKKU Graduate School of Management of Technology; runs the school's official Instagram</span><small>2026~</small></li>
+              <li><span class="ko">VANK 디지털 메타버스 AI 외교관 16기 활동 완료</span><span class="en">VANK Digital Metaverse AI Diplomat, 16th cohort, completed</span><small>2026</small></li>
+              <li><span class="ko">Stony Brook University Writing Center 튜터</span><span class="en">Writing Center Tutor, Stony Brook University</span><small>2022</small></li>
+              <li><span class="ko">축구부 주장 (K7 대학리그 준우승)</span><span class="en">Soccer team captain (runner-up, K7 college league)</span><small>Stony Brook University</small></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="contact">
+      <h2 class="sec-label"><span class="ko">연락</span><span class="en">Contact</span></h2>
+      <div class="sec-body contact-grid">
+        <p class="lead"><span class="ko">채용, 연구 협업, 인터뷰 요청은 이메일이나 LinkedIn으로 연락 주세요.</span><span class="en">For roles, research collaboration or interviews, reach me by email or LinkedIn.</span></p>
+        <div class="email-line">
+          <span class="email" id="email-text">kkst01221203@gmail.com</span>
+          <button type="button" class="btn" id="copy-email-contact" data-copy="kkst01221203@gmail.com">
+            <span class="copy-idle"><span class="ko">주소 복사</span><span class="en">Copy</span></span>
+            <span class="copy-done" hidden><span class="ko">복사했습니다</span><span class="en">Copied</span></span>
+          </button>
+        </div>
+        <ul class="contact-list">
+          <li><small>LINKEDIN</small><a href="https://www.linkedin.com/in/sungtaekim0122" target="_blank" rel="noopener">linkedin.com/in/sungtaekim0122</a></li>
+          <li><small>GITHUB</small><a href="https://github.com/Sungtae10" target="_blank" rel="noopener">github.com/Sungtae10</a></li>
+          <li><small><span class="ko">위치</span><span class="en">LOCATION</span></small><span><span class="ko">서울</span><span class="en">Seoul, Korea</span></span></li>
+        </ul>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="wrap foot">
+  <p><span class="ko">프로젝트 수치는 공개 저장소의 평가 결과를 그대로 옮겼습니다.</span><span class="en">Project figures are taken directly from the evaluation results in the public repositories.</span></p>
+  <p><span class="ko">최종 업데이트 2026.09</span><span class="en">Last updated September 2026</span></p>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var buttons = document.querySelectorAll("[data-set-lang]");
+
+  function setLang(lang) {
+    root.setAttribute("data-lang", lang);
+    root.lang = lang === "en" ? "en" : "ko";
+    buttons.forEach(function (b) {
+      b.setAttribute("aria-pressed", String(b.getAttribute("data-set-lang") === lang));
+    });
+    try { localStorage.setItem("portfolio-lang", lang); } catch (e) {}
+  }
+
+  var initial = null;
+  var hash = (location.hash || "").replace("#", "").toLowerCase();
+  if (hash === "en" || hash === "ko") initial = hash;
+  if (!initial) {
+    try { initial = localStorage.getItem("portfolio-lang"); } catch (e) {}
+  }
+  if (initial !== "en" && initial !== "ko") {
+    var nav = (navigator.language || "ko").toLowerCase();
+    initial = nav.indexOf("ko") === 0 ? "ko" : "en";
+  }
+  setLang(initial);
+
+  buttons.forEach(function (b) {
+    b.addEventListener("click", function () { setLang(b.getAttribute("data-set-lang")); });
+  });
+
+  function selectEmail() {
+    var el = document.getElementById("email-text");
+    if (!el || !window.getSelection) return;
+    var range = document.createRange();
+    range.selectNodeContents(el);
+    var sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+    el.scrollIntoView({ block: "center" });
+  }
+
+  document.querySelectorAll("[data-copy]").forEach(function (btn) {
+    var idle = btn.querySelector(".copy-idle");
+    var done = btn.querySelector(".copy-done");
+    var timer = null;
+    btn.addEventListener("click", function () {
+      var text = btn.getAttribute("data-copy");
+      function showDone() {
+        if (idle) idle.hidden = true;
+        if (done) done.hidden = false;
+        clearTimeout(timer);
+        timer = setTimeout(function () {
+          if (idle) idle.hidden = false;
+          if (done) done.hidden = true;
+        }, 2000);
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(showDone, selectEmail);
+      } else {
+        selectEmail();
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
